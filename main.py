@@ -19,6 +19,7 @@ def main():
     draw_ret = draw_func('value')
     table_ret = table_func('value')
     shuttle.check()
+    print(shuttle.vals)
 
 
 if __name__ == '__main__':
