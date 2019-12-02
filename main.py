@@ -7,10 +7,10 @@
 from draw_interface import draw_func
 from table_interface import table_func
 from shuttle import shuttle
+from shuttle import logger
 from shuttle import import_all_eval_modules_for_shuttle
 
-
-
+@logger(filename='1.log', mode='a', stdout=False)
 def main():
     import_all_eval_modules_for_shuttle()
     draw_ret = draw_func('draw_value')
