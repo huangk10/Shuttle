@@ -5,10 +5,10 @@
 # @Email : huangke10@foxmail.com
 
 
-from shuttle import shuttle
+from shuttle import register
 
 
-@shuttle.register({'表格接口指标': 'table_arg'})
+@register({'表格接口指标': 'table_arg'})
 def table_func(table_arg):
     table_arg = table_arg
     table_func.locals = locals()

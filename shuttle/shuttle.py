@@ -107,6 +107,8 @@ class Shuttle:
 
 shuttle = Shuttle()
 logger = shuttle.logger
+register = shuttle.register
+evaluate = shuttle.evaluate
 
 
 EVAL_MODULE = [('', ['check'])]

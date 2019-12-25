@@ -5,10 +5,10 @@
 # @Email : huangke10@foxmail.com
 
 
-from shuttle import shuttle
+from shuttle import evaluate
 
 
-@shuttle.evaluate
+@evaluate
 def eval_draw_and_table(dict_file):
     if dict_file['draw_func']['画图接口指标'] == dict_file['table_func']['表格接口指标']:
         print('接口指标一致')

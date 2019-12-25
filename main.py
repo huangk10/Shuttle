@@ -10,7 +10,7 @@ from shuttle import shuttle
 from shuttle import logger
 from shuttle import import_all_eval_modules_for_shuttle
 
-@logger(filename='1.log', mode='a', stdout=False)
+@logger(filename='log.txt', mode='a', stdout=True)
 def main():
     import_all_eval_modules_for_shuttle()
     draw_ret = draw_func('draw_value')
@@ -19,7 +19,6 @@ def main():
     draw_ret = draw_func('value')
     table_ret = table_func('value')
     shuttle.check()
-    print(shuttle.vals)
 
 
 if __name__ == '__main__':

@@ -5,10 +5,10 @@
 # @Email : huangke10@foxmail.com
 
 
-from shuttle import shuttle
+from shuttle import register
 
 
-@shuttle.register({'画图接口指标': 'draw_arg'})
+@register({'画图接口指标': 'draw_arg'})
 def draw_func(draw_arg):
     draw_arg = draw_arg
     draw_func.locals = locals()
