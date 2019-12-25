@@ -1,4 +1,6 @@
 # Shuttle
+![Travis (.org) branch](https://img.shields.io/travis/huangk10/Shuttle/master)
+
 用于数据分析报告图表接口间指标一致性校验的工具，包括指标收集、检测接口、指标序列化、指标批量对比和日志等功能。
 
 ## 具体用法
