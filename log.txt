@@ -1,7 +1,0 @@
-接口指标不一致
-接口指标不一致
-{'draw_func': {'画图接口指标': 'draw_value'}, 'table_func': {'表格接口指标': 'table_value'}, 'draw_func-1': {'画图接口指标': 'value'}, 'table_func-1': {'表格接口指标': 'value'}}
-接口指标不一致
-接口指标不一致
-接口指标不一致
-接口指标不一致
