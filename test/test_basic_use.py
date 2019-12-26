@@ -1,14 +1,22 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# @Time : 2019/11/22 17:30 
+# @Time : 2019/12/25 17:30 
 # @Author : huangke
 # @Email : huangke10@foxmail.com
 
-from draw_interface import draw_func
-from table_interface import table_func
+import sys
+import os
+root_path = os.path.abspath(__file__)
+root_path = os.path.split(root_path)[0]
+root_path = os.path.split(root_path)[0]
+sys.path.append(root_path)
+
+from .draw_interface import draw_func
+from .table_interface import table_func
 from shuttle import shuttle
 from shuttle import logger
 from shuttle import import_all_eval_modules_for_shuttle
+
 
 @logger(filename='log.txt', mode='a', stdout=True)
 def main():
@@ -21,5 +29,5 @@ def main():
     shuttle.check()
 
 
-if __name__ == '__main__':
+def test_basic_usage():
     main()

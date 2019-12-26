@@ -83,25 +83,43 @@ class Shuttle:
         if isinstance(src_dict, dict):
             for key in tgt_dict:
                 if key in src_dict:
-                    Shuttle.compare_dicts(src_dict[key], tgt_dict[key], path=path+f'["{key}"]')
+                    Shuttle.compare_dicts(src_dict[key],
+                                          tgt_dict[key],
+                                          path=path+f'["{key}"]')
                 else:
                     path = path+f'["{key}"]'
                     print(f"src_dict路径{path}不存在")
         else:
             if str(src_dict) != str(tgt_dict):
-                print(f"src_dict路径{path}值{src_dict}和tgt_dict路径{path}值{tgt_dict}不相等")
+                print(f"src_dict路径{path}值{src_dict}和"
+                      f"tgt_dict路径{path}值{tgt_dict}不相等")
 
     def logger(self, filename, mode, stdout=True):
-        def decorate(func):
-            @self._functools.wraps(func)
-            def warpper(*args, **kwargs):
-                self._sys.stdout = self._Logger(filename, mode) if stdout else open(filename, mode)
-                result = func(*args, **kwargs)
-                self._sys.stdout.close()
-                self._sys.stdout = self._sys.__stdout__
-                return result
-            return warpper
-        return decorate
+
+            F_inst = self
+            Logger = self._Logger
+
+            class DecoratorWithContextManager:
+                def __call__(self, func):
+                    @F_inst._functools.wraps(func)
+                    def warpper(*args, **kwargs):
+                        F_inst._sys.stdout = Logger(filename, mode) if stdout \
+                            else open(filename, mode)
+                        result = func(*args, **kwargs)
+                        F_inst._sys.stdout.close()
+                        F_inst._sys.stdout = F_inst._sys.__stdout__
+                        return result
+                    return warpper
+
+                def __enter__(self):
+                    F_inst._sys.stdout = Logger(filename, mode) if stdout \
+                        else open(filename, mode)
+
+                def __exit__(self, exc_type, exc_val, exc_tb):
+                    F_inst._sys.stdout.close()
+                    F_inst._sys.stdout = F_inst._sys.__stdout__
+
+            return DecoratorWithContextManager()
 
 
 
